@@ -1,4 +1,4 @@
-const N_POINTS = 100
+const N_POINTS = 1000
 const PADDING = 30
 const INF = 1e16
 const EPS = 1
