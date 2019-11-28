@@ -12,6 +12,7 @@ const int MIN_VAL = -1000;
 const int MAX_VAL =  1000;
 const std::string OUTPUT_FILE_NAME = "diagram";
 
+template <typename T>
 struct Arguments {
   int n_points = N_POINTS;
   int width = WIDTH;
@@ -19,7 +20,7 @@ struct Arguments {
   int min_val = MIN_VAL;
   int max_val = MAX_VAL;
   std::string output_file_name = OUTPUT_FILE_NAME;
-  std::vector <Point> sites; 
+  std::vector <Point <T>> sites; 
 
   void verify () {
     if (n_points <= 0) {

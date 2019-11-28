@@ -2,6 +2,7 @@
 
 #include "Point.hpp"
 
+template <typename T>
 class Event {
 public:
   enum class Type {
@@ -15,6 +16,6 @@ public:
   }
 
 private:
-  Point p;
+  Point <T> p;
   bool valid;
 };

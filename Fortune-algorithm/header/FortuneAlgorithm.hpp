@@ -5,16 +5,17 @@
 #include "Voronoi.hpp"
 #include "Event.hpp"
 
+template <typename T>
 class FortuneAlgorithm {
 private:
-  Voronoi diagram;
-  std::priority_queue <Event> pq;
-  void compute_bounds (const std::vector <Point>& sites);
-  void compute_diagram (const std::vector <Point>& sites);
-  void init_site_events (const std::vector <Point>& sites);
+  Voronoi <T> diagram;
+  std::priority_queue <Event <T>> pq;
+  void compute_bounds (const std::vector <Point <T>>& sites);
+  void compute_diagram (const std::vector <Point <T>>& sites);
+  void init_site_events (const std::vector <Point <T>>& sites);
 
 public:
-  FortuneAlgorithm (const std::vector <Point>& sites);
-  inline Voronoi getDiagram () const { return diagram; }
+  FortuneAlgorithm (const std::vector <Point <T>>& sites);
+  inline Voronoi <T> getDiagram () const { return diagram; }
 
 };

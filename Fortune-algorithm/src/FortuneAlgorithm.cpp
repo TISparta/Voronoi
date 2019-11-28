@@ -1,3 +1,4 @@
+/*
 #include <climits>
 #include <cmath>
 #include <algorithm>
@@ -36,3 +37,4 @@ void FortuneAlgorithm::init_site_events (const std::vector <Point>& sites)
     pq.push (p);
   }
 }
+*/

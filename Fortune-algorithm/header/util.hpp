@@ -11,6 +11,7 @@ namespace util {
 /**
  * Returns a random number in [l, r)
  */
+template <typename T>
 static T random_real (int l, int r)
 {
   std::mt19937 rng;
@@ -22,8 +23,9 @@ static T random_real (int l, int r)
 /**
  * Returns a random point whose coordinates are in [l, r)
  */
-static Point random_point (int l, int r) {
-  return Point (random_real (l, r), random_real (l, r));
+template <typename T>
+static Point <T> random_point (int l, int r) {
+  return Point <T> (random_real <T> (l, r), random_real <T> (l, r));
 }
 
 /**
@@ -43,7 +45,8 @@ void show_help ()
 /**
  * Parses the arguments and saves them
  */
-static void parse_arguments (int argc, char** argv, Arguments& arg)
+template <typename T>
+static void parse_arguments (int argc, char** argv, Arguments <T>& arg)
 { 
   int option;
   while (true) {
@@ -74,12 +77,13 @@ static void parse_arguments (int argc, char** argv, Arguments& arg)
 /**
  * Generates 'n_sites' points in 'sites'
  */
+template <typename T>
 void generate_random_sites (int n_sites, int min_val, int max_val,
-                            std::vector <Point>& sites)
+                            std::vector <Point <T>>& sites)
 {
   sites.clear ();
   for (int i = 0; i < n_sites; i++) {
-    sites.push_back (random_point(min_val, max_val));
+    sites.push_back (random_point <T> (min_val, max_val));
   }
 }
 
