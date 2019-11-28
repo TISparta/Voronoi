@@ -73,7 +73,7 @@ namespace Voronoi {
                 glVertex3f(p.x, p.y, p.z);
             }
             glEnd();
-            std::this_thread::sleep_for(std::chrono::milliseconds(20));
+  //          std::this_thread::sleep_for(std::chrono::milliseconds(20));
             update();
         }
     };
