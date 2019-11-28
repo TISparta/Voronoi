@@ -4,11 +4,9 @@
 #include "HalfEdge.hpp"
 
 template <typename T>
-class Site {
-public:
+struct Site {
 
 
-private:
   Point <T> site;
   HalfEdge <T> edges;
 

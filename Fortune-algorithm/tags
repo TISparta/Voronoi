@@ -7,62 +7,103 @@
 !_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
 Arguments	header/Arguments.hpp	/^struct Arguments {$/;"	s
 CIRCLE_EVENT	header/Event.hpp	/^    CIRCLE_EVENT$/;"	e	enum:Event::Type
+Event	header/Event.hpp	/^  Event (Site <T> s):$/;"	f	class:Event
 Event	header/Event.hpp	/^class Event {$/;"	c
 FORCE	Makefile	/^FORCE: ;$/;"	t
+FortuneAlgorithm	header/FortuneAlgorithm.hpp	/^  FortuneAlgorithm (const std::vector <Point <T>>& sites)$/;"	f	class:FortuneAlgorithm
 FortuneAlgorithm	header/FortuneAlgorithm.hpp	/^class FortuneAlgorithm {$/;"	c
-FortuneAlgorithm	src/FortuneAlgorithm.cpp	/^FortuneAlgorithm::FortuneAlgorithm (const std::vector <Point>& sites)$/;"	f	class:FortuneAlgorithm
 HEGIHT	header/Arguments.hpp	/^const int HEGIHT = 600;$/;"	v	typeref:typename:const int
 HalfEdge	header/HalfEdge.hpp	/^class HalfEdge {$/;"	c
+LIBS	Makefile	/^LIBS = -lGL -lglfw$/;"	m
 MAX_VAL	header/Arguments.hpp	/^const int MAX_VAL =  1000;$/;"	v	typeref:typename:const int
 MIN_VAL	header/Arguments.hpp	/^const int MIN_VAL = -1000;$/;"	v	typeref:typename:const int
 N_POINTS	header/Arguments.hpp	/^const int N_POINTS = 10;$/;"	v	typeref:typename:const int
+NaiveSolution	voronoi.hpp	/^        NaiveSolution(int n, int p, int width, int height)$/;"	f	class:Voronoi::NaiveSolution
+NaiveSolution	voronoi.hpp	/^    class NaiveSolution {$/;"	c	namespace:Voronoi
 OUTPUT_FILE_NAME	header/Arguments.hpp	/^const std::string OUTPUT_FILE_NAME = "diagram";$/;"	v	typeref:typename:const std::string
-Point	header/Point.hpp	/^  Point () {}$/;"	f	struct:Point
+Point	header/Point.hpp	/^	Point() {$/;"	f	struct:Point
+Point	header/Point.hpp	/^	Point(T x,T y,T z)$/;"	f	struct:Point
 Point	header/Point.hpp	/^  Point (T x, T y): x(x), y(y) {}$/;"	f	struct:Point
-Point	header/Point.hpp	/^struct Point {$/;"	s
+Point	header/Point.hpp	/^struct Point{$/;"	s
 References	README.md	/^# References$/;"	c
 SITE_EVENT	header/Event.hpp	/^    SITE_EVENT,$/;"	e	enum:Event::Type
 Site	header/Site.hpp	/^class Site {$/;"	c
-T	header/Point.hpp	/^using T = float;$/;"	t	typeref:typename:float
+T	src/main.cpp	/^using T = float;$/;"	t	typeref:typename:float	file:
 Type	header/Event.hpp	/^  enum class Type {$/;"	g	class:Event
-Voronoi	header/Voronoi.hpp	/^struct Voronoi {$/;"	s
+VORONOI_HPP	voronoi.hpp	/^#define VORONOI_HPP$/;"	d
+Visualization	header/Visualization.hpp	/^class Visualization {$/;"	c
+Voronoi	voronoi.hpp	/^namespace Voronoi {$/;"	n
+VoronoiDiagram	header/VoronoiDiagram.hpp	/^struct VoronoiDiagram {$/;"	s
 WIDTH	header/Arguments.hpp	/^const int WIDTH = 800;$/;"	v	typeref:typename:const int
+Window	voro.cpp	/^Window::Window(int width, int height, int n,int p, std::string title)$/;"	f	class:Window
+Window	voro.cpp	/^class Window{$/;"	c	file:
 clean	Makefile	/^clean:$/;"	t
-compute_bounds	src/FortuneAlgorithm.cpp	/^void FortuneAlgorithm::compute_bounds (const std::vector <Point>& sites)$/;"	f	class:FortuneAlgorithm	typeref:typename:void
-compute_diagram	src/FortuneAlgorithm.cpp	/^void FortuneAlgorithm::compute_diagram (const std::vector <Point>& sites)$/;"	f	class:FortuneAlgorithm	typeref:typename:void
-diagram	header/FortuneAlgorithm.hpp	/^  Voronoi diagram;$/;"	m	class:FortuneAlgorithm	typeref:typename:Voronoi
-from	header/HalfEdge.hpp	/^  Point* from = nullptr;$/;"	m	class:HalfEdge	typeref:typename:Point *
+color	header/Point.hpp	/^  double color[3];$/;"	m	struct:Point	typeref:typename:double[3]
+compute_bounds	header/FortuneAlgorithm.hpp	/^  void compute_bounds (const std::vector <Point <T>>& sites)$/;"	f	class:FortuneAlgorithm	typeref:typename:void
+compute_diagram	header/FortuneAlgorithm.hpp	/^  void compute_diagram (const std::vector <Point <T>>& sites)$/;"	f	class:FortuneAlgorithm	typeref:typename:void
+diagram	header/FortuneAlgorithm.hpp	/^  VoronoiDiagram <T> diagram;$/;"	m	class:FortuneAlgorithm	typeref:typename:VoronoiDiagram<T>
+display	voro.cpp	/^void Window::display(){$/;"	f	class:Window	typeref:typename:void
+edges	header/Site.hpp	/^  HalfEdge <T> edges;$/;"	m	class:Site	typeref:typename:HalfEdge<T>
+from	header/HalfEdge.hpp	/^  Point <T>* from = nullptr;$/;"	m	class:HalfEdge	typeref:typename:Point<T> *
+generateCoordinates	voronoi.hpp	/^        void generateCoordinates(int width, int height) {$/;"	f	class:Voronoi::NaiveSolution	typeref:typename:void
 generate_random_sites	header/util.hpp	/^void generate_random_sites (int n_sites, int min_val, int max_val,$/;"	f	namespace:util	typeref:typename:void
-getDiagram	header/FortuneAlgorithm.hpp	/^  inline Voronoi getDiagram () const { return diagram; }$/;"	f	class:FortuneAlgorithm	typeref:typename:Voronoi
+getDiagram	header/FortuneAlgorithm.hpp	/^  inline VoronoiDiagram <T> getDiagram () const { return diagram; }$/;"	f	class:FortuneAlgorithm	typeref:typename:VoronoiDiagram<T>
 height	header/Arguments.hpp	/^  int height = HEGIHT;$/;"	m	struct:Arguments	typeref:typename:int
+init_site_events	header/FortuneAlgorithm.hpp	/^  void init_site_events (const std::vector <Point <T>>& sites)$/;"	f	class:FortuneAlgorithm	typeref:typename:void
 init_site_events	src/FortuneAlgorithm.cpp	/^void FortuneAlgorithm::init_site_events (const std::vector <Point>& sites)$/;"	f	class:FortuneAlgorithm	typeref:typename:void
+iteration	voronoi.hpp	/^        int iteration{0};$/;"	m	class:Voronoi::NaiveSolution	typeref:typename:int
 main	src/main.cpp	/^int main (int argc, char** argv) {$/;"	f	typeref:typename:int
+main	voro.cpp	/^int main(){$/;"	f	typeref:typename:int
 max_val	header/Arguments.hpp	/^  int max_val = MAX_VAL;$/;"	m	struct:Arguments	typeref:typename:int
-max_x	header/Voronoi.hpp	/^  int max_x;$/;"	m	struct:Voronoi	typeref:typename:int
-max_y	header/Voronoi.hpp	/^  int max_y;$/;"	m	struct:Voronoi	typeref:typename:int
+max_x	header/VoronoiDiagram.hpp	/^  int max_x;$/;"	m	struct:VoronoiDiagram	typeref:typename:int
+max_y	header/VoronoiDiagram.hpp	/^  int max_y;$/;"	m	struct:VoronoiDiagram	typeref:typename:int
 min_val	header/Arguments.hpp	/^  int min_val = MIN_VAL;$/;"	m	struct:Arguments	typeref:typename:int
-min_x	header/Voronoi.hpp	/^  int min_x;$/;"	m	struct:Voronoi	typeref:typename:int
-min_y	header/Voronoi.hpp	/^  int min_y;$/;"	m	struct:Voronoi	typeref:typename:int
+min_x	header/VoronoiDiagram.hpp	/^  int min_x;$/;"	m	struct:VoronoiDiagram	typeref:typename:int
+min_y	header/VoronoiDiagram.hpp	/^  int min_y;$/;"	m	struct:VoronoiDiagram	typeref:typename:int
+n	voronoi.hpp	/^        int n;$/;"	m	class:Voronoi::NaiveSolution	typeref:typename:int
 n_points	header/Arguments.hpp	/^  int n_points = N_POINTS;$/;"	m	struct:Arguments	typeref:typename:int
+naive	voro.cpp	/^    Voronoi::NaiveSolution naive;$/;"	m	class:Window	typeref:typename:Voronoi::NaiveSolution	file:
 next	header/HalfEdge.hpp	/^  HalfEdge* next = nullptr;$/;"	m	class:HalfEdge	typeref:typename:HalfEdge *
+operator !=	header/Point.hpp	/^	bool operator!=(const Point<T> &point)const {$/;"	f	struct:Point	typeref:typename:bool
+operator *	header/Point.hpp	/^	Point<T> operator*(const double& a)const {$/;"	f	struct:Point	typeref:typename:Point<T>
+operator *	header/Point.hpp	/^Point<T> operator* (double a, Point<T> p) {$/;"	f	typeref:typename:Point<T>
+operator +	header/Point.hpp	/^	Point<T> operator+(const Point<T>& point)const {$/;"	f	struct:Point	typeref:typename:Point<T>
+operator -	header/Point.hpp	/^	Point<T> operator-(const Point<T>& point)const {$/;"	f	struct:Point	typeref:typename:Point<T>
+operator /	header/Point.hpp	/^    Point<T> operator\/(const double& a)const{$/;"	f	struct:Point	typeref:typename:Point<T>
 operator <	header/Event.hpp	/^  bool operator < (const Event& other)$/;"	f	class:Event	typeref:typename:bool
 operator <	header/Point.hpp	/^  bool operator < (const Point& other) const$/;"	f	struct:Point	typeref:typename:bool
+operator <<	header/Point.hpp	/^	friend std::ostream &operator<<(std::ostream& os, const Point<T>&p){$/;"	f	typeref:typename:std::ostream &
+operator =	header/Point.hpp	/^	Point<T>& operator=(const Point<T>& point) {$/;"	f	struct:Point	typeref:typename:Point<T> &
 operator ==	header/Point.hpp	/^  bool operator == (const Point& other) const$/;"	f	struct:Point	typeref:typename:bool
 output_file_name	header/Arguments.hpp	/^  std::string output_file_name = OUTPUT_FILE_NAME;$/;"	m	struct:Arguments	typeref:typename:std::string
-p	header/Event.hpp	/^  Point p;$/;"	m	class:Event	typeref:typename:Point
-parse_arguments	header/util.hpp	/^static void parse_arguments (int argc, char** argv, Arguments& arg)$/;"	f	namespace:util	typeref:typename:void
-pq	header/FortuneAlgorithm.hpp	/^  std::priority_queue <Event> pq;$/;"	m	class:FortuneAlgorithm	typeref:typename:std::priority_queue<Event>
+p	header/Event.hpp	/^  Point <T> p;$/;"	m	class:Event	typeref:typename:Point<T>
+p	voronoi.hpp	/^        int p;$/;"	m	class:Voronoi::NaiveSolution	typeref:typename:int
+p_norm	header/Point.hpp	/^    friend double p_norm(const Point<T>&point, int p) {$/;"	f	typeref:typename:double
+parse_arguments	header/util.hpp	/^static void parse_arguments (int argc, char** argv, Arguments <T>& arg)$/;"	f	namespace:util	typeref:typename:void
+pixels	voronoi.hpp	/^        std::vector<std::vector<Point<double>>> pixels;$/;"	m	class:Voronoi::NaiveSolution	typeref:typename:std::vector<std::vector<Point<double>>>
+points	voronoi.hpp	/^    std::vector<Point<double>> points;$/;"	v	namespace:Voronoi	typeref:typename:std::vector<Point<double>>
+pq	header/FortuneAlgorithm.hpp	/^  std::priority_queue <Event <T>> pq;$/;"	m	class:FortuneAlgorithm	typeref:typename:std::priority_queue<Event<T>>
 prev	header/HalfEdge.hpp	/^  HalfEdge* prev = nullptr;$/;"	m	class:HalfEdge	typeref:typename:HalfEdge *
-random_point	header/util.hpp	/^static Point random_point (int l, int r) {$/;"	f	namespace:util	typeref:typename:Point
+random_point	header/util.hpp	/^static Point <T> random_point (int l, int r) {$/;"	f	namespace:util	typeref:typename:Point<T>
 random_real	header/util.hpp	/^static T random_real (int l, int r)$/;"	f	namespace:util	typeref:typename:T
+render	header/Point.hpp	/^	void render() {$/;"	f	struct:Point	typeref:typename:void
+render	voronoi.hpp	/^        void render() {$/;"	f	class:Voronoi::NaiveSolution	typeref:typename:void
+setDimension	voronoi.hpp	/^        void setDimension(int width, int height) {$/;"	f	class:Voronoi::NaiveSolution	typeref:typename:void
+setNorm	voronoi.hpp	/^        void setNorm(int p) { this->p=p;$/;"	f	class:Voronoi::NaiveSolution	typeref:typename:void
 show_help	header/util.hpp	/^void show_help ()$/;"	f	namespace:util	typeref:typename:void
-sites	header/Arguments.hpp	/^  std::vector <Point> sites; $/;"	m	struct:Arguments	typeref:typename:std::vector<Point>
-sites	header/Voronoi.hpp	/^  std::vector <Site> sites;$/;"	m	struct:Voronoi	typeref:typename:std::vector<Site>
-to	header/HalfEdge.hpp	/^  Point* to = nullptr;$/;"	m	class:HalfEdge	typeref:typename:Point *
+site	header/Site.hpp	/^  Point <T> site;$/;"	m	class:Site	typeref:typename:Point<T>
+sites	header/Arguments.hpp	/^  std::vector <Point <T>> sites; $/;"	m	struct:Arguments	typeref:typename:std::vector<Point<T>>
+sites	header/VoronoiDiagram.hpp	/^  std::vector <Site <T>> sites;$/;"	m	struct:VoronoiDiagram	typeref:typename:std::vector<Site<T>>
+title	voro.cpp	/^	std::string title;$/;"	m	class:Window	typeref:typename:std::string	file:
+to	header/HalfEdge.hpp	/^  Point <T>* to = nullptr;$/;"	m	class:HalfEdge	typeref:typename:Point<T> *
+type	header/Event.hpp	/^  Type type;$/;"	m	class:Event	typeref:typename:Type
+update	voronoi.hpp	/^        void update(){$/;"	f	class:Voronoi::NaiveSolution	typeref:typename:void
 util	header/util.hpp	/^namespace util {$/;"	n
 valid	header/Event.hpp	/^  bool valid;$/;"	m	class:Event	typeref:typename:bool
 verify	header/Arguments.hpp	/^  void verify () {$/;"	f	struct:Arguments	typeref:typename:void
 voronoi	Makefile	/^voronoi: FORCE$/;"	t
 width	header/Arguments.hpp	/^  int width = WIDTH;$/;"	m	struct:Arguments	typeref:typename:int
-x	header/Point.hpp	/^  T x;$/;"	m	struct:Point	typeref:typename:T
-y	header/Point.hpp	/^  T y;$/;"	m	struct:Point	typeref:typename:T
+window	voro.cpp	/^	GLFWwindow *window{nullptr};$/;"	m	class:Window	typeref:typename:GLFWwindow *	file:
+x	header/Point.hpp	/^	T x,y,z;$/;"	m	struct:Point	typeref:typename:T
+y	header/Point.hpp	/^	T x,y,z;$/;"	m	struct:Point	typeref:typename:T
+z	header/Point.hpp	/^	T x,y,z;$/;"	m	struct:Point	typeref:typename:T
