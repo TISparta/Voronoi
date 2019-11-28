@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Point.hpp"
-#include "Site.hpp"
+#include "Cell.hpp"
 
 template <typename T>
 class Event {
@@ -11,7 +11,7 @@ public:
     CIRCLE_EVENT
   };
 
-  Event (Site <T> s):
+  Event (Cell <T> s):
     type (Type::SITE_EVENT),
     p (s.site) {}
 

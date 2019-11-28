@@ -4,10 +4,10 @@
 #include "HalfEdge.hpp"
 
 template <typename T>
-struct Site {
+struct Cell {
 
 
   Point <T> site;
-  HalfEdge <T> edges;
+  HalfEdge <T>* edges;
 
 };

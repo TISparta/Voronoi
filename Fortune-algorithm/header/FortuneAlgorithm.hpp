@@ -7,13 +7,15 @@
 
 #include "VoronoiDiagram.hpp"
 #include "Event.hpp"
+#include "Arc.hpp"
 
 template <typename T>
 class FortuneAlgorithm {
 private:
   VoronoiDiagram <T> diagram;
   std::priority_queue <Event <T>> pq;
-  
+  Arc <T> *beachline = 0;
+
   void compute_bounds (const std::vector <Point <T>>& sites)
   {
     diagram.min_x = diagram.min_y = INT_MAX;
@@ -28,18 +30,45 @@ private:
   
   void compute_diagram (const std::vector <Point <T>>& sites)
   {
-    init_site_events (sites);
+    for (auto p: sites) pq.push (Event <T> (p));
     while (not pq.empty ()) {
-      
+      auto event = pq.top ();
+      pq.pop ();
+      if (not event.valid) continue;
+      if (event.type == Event <T>::Type::SITE_EVENT) {
+        process_site_event (event);
+      }
+      if (event.type == Event <T>::Type::CIRCLE_EVENT) {
+        process_circle_event (event);
+      }
     }
   }
-  
-  void init_site_events (const std::vector <Point <T>>& sites)
-  {
-   for (auto p: sites) {
-     pq.push (p);
-   }
 
+  void process_site_event (Event <T> event)
+  {
+    Point <T> p = event.p;
+    // insert p to the brachline
+  }
+
+  void process_circle_event (Event <T> event)
+  {
+    Point <T> p = event.p;
+    if (!beachline) {
+      beachline = new Arc <T> (p);
+      return;
+    }
+    HalfEdge <T>* cur_edge = new HalfEdge <T> (p);
+    Arc <T>* cur_arc = event->arc;
+    if (cur_arc->prev)
+    {
+      cur_arc->prev->next = cur_arc->next;
+      // TODO
+    }
+    if (cur_arc->next)
+    {
+      cur_arc->next = cur_arc->prev;
+      // TODO
+    }
   }
 
 public:

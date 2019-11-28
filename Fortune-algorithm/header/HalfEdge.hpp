@@ -5,7 +5,7 @@
 template <typename T>
 class HalfEdge {
 public:
-
+  HalfEdge (Point <T>* from): from(from) {}
 
 private:
   Point <T>* from = nullptr;

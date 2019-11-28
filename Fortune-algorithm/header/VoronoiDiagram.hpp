@@ -2,12 +2,12 @@
 
 #include <queue>
 
-#include "Site.hpp"
+#include "Cell.hpp"
 
 
 template <typename T>
 struct VoronoiDiagram {
-  std::vector <Site <T>> sites;
+  std::vector <Cell <T>> cells;
 
   int min_x;
   int max_x;

@@ -1,5 +1,5 @@
 #include "../header/util.hpp"
-#include "../header/VoronoiDiagram.hpp"
+#include "../header/FortuneAlgorithm.hpp"
 
 using T = float;
 
@@ -11,7 +11,18 @@ int main (int argc, char** argv) {
   if (arg.sites.empty ()) {
     util::generate_random_sites (arg.n_points, arg.min_val, arg.max_val, arg.sites);
   }
-  VoronoiDiagram <T> diagram;
+  FortuneAlgorithm <T> fortune (arg.sites);
+  VoronoiDiagram <T> diagram = fortune.getDiagram ();
+  for (auto cell: diagram.cells) {
+    Point <T> site = cell.site;
+    HalfEdge* edge = cell.edges;
+    do {
+      Point <T> from = edge->from;
+      Point <T> to = edge->to;
+      // do something with (site, from, to)
+      edge = edge->next;
+    } while (edge != cell.edges);
+  }
   // diagram.generate_diagram (arg);
 #else
   // Jhonny's task
