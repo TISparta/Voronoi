@@ -1,5 +1,6 @@
 #include "../header/util.hpp"
 #include "../header/VoronoiDiagram.hpp"
+#include "../header/Visualization.hpp"
 
 using T = float;
 
@@ -14,6 +15,9 @@ int main (int argc, char** argv) {
   VoronoiDiagram <T> diagram;
   // diagram.generate_diagram (arg);
 #else
+  Visualization<Voronoi::NaiveSolution>
+    window(100,100,1000,2,"Naive Solution");
+  window.display();
   // Jhonny's task
 #endif
   return (0);

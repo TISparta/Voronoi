@@ -1,8 +1,14 @@
+CC = g++
 LIBS = -lGL -lglfw
+TARGET = fortune naive
 
-voronoi: FORCE
-	g++ src/main.cpp -o fortune -DFORTUNE
-	g++ src/main.cpp -o naive $(LIBS)
+ALL: $(TARGET)
+
+fortune: FORCE
+	$(CC) src/main.cpp -o fortune -DFORTUNE
+
+naive: src/main.cpp header/Point.hpp
+	$(CC) src/main.cpp -o naive $(LIBS) -O2
 
 FORCE: ;
 
