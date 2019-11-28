@@ -1,5 +1,5 @@
 #include "../header/util.hpp"
-#include "../header/Voronoi.hpp"
+#include "../header/VoronoiDiagram.hpp"
 
 using T = float;
 
@@ -11,7 +11,7 @@ int main (int argc, char** argv) {
   if (arg.sites.empty ()) {
     util::generate_random_sites (arg.n_points, arg.min_val, arg.max_val, arg.sites);
   }
-  Voronoi <T> diagram;
+  VoronoiDiagram <T> diagram;
   // diagram.generate_diagram (arg);
 #else
   // Jhonny's task

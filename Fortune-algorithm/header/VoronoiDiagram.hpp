@@ -6,7 +6,7 @@
 
 
 template <typename T>
-struct Voronoi {
+struct VoronoiDiagram {
   std::vector <Site <T>> sites;
 
   int min_x;
