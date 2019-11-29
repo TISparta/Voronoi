@@ -10,4 +10,9 @@ struct HalfEdge {
   Point <T> to;
   HalfEdge* prev = nullptr;
   HalfEdge* next = nullptr;
+
+  void print () {
+    printf ("(%f,%f) -> (%f,%f)\n", from.x, from.y, to.x, to.y);
+  }
+
 };

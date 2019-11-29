@@ -32,7 +32,7 @@ struct Event {
   Type type;
   Point <T> p;
   Arc <T> *arc;
-  bool valid;
+  bool valid = true;
 };
 
 template <typename T>
