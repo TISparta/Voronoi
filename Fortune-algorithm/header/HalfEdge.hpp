@@ -3,13 +3,11 @@
 #include "Point.hpp"
 
 template <typename T>
-class HalfEdge {
-public:
+struct HalfEdge {
+  HalfEdge (Point <T> from): from(from) {}
 
-
-private:
-  Point <T>* from = nullptr;
-  Point <T>* to = nullptr;
+  Point <T> from;
+  Point <T> to;
   HalfEdge* prev = nullptr;
   HalfEdge* next = nullptr;
 };

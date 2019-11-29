@@ -1,8 +1,14 @@
-LIBS = -lGL -lglfw
+CC = g++
+LIBS = -lGL -lglfw -fopenmp
+TARGET = fortune naive
 
-voronoi: FORCE
-	g++ src/main.cpp -o fortune -DFORTUNE
-	g++ src/main.cpp -o naive $(LIBS)
+ALL: $(TARGET)
+
+fortune: FORCE
+	$(CC) src/main.cpp -o fortune -DFORTUNE
+
+naive: src/main.cpp header/Point.hpp header/Visualization.hpp header/Naive.hpp
+	$(CC) src/main.cpp -o naive $(LIBS) -O2
 
 FORCE: ;
 
