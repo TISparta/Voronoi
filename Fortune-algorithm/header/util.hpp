@@ -48,10 +48,10 @@ void show_help ()
 {
   puts ("./voronoi [options]");
   puts ("Options");
-  puts ("\t -n <number_points>");
+  puts ("\t -n <number points>");
   puts ("\t -w <width>");
   puts ("\t -h <height>");
-  puts ("\t -f <output file name>");
+  puts ("\t -c <number threads>");
   exit (-1);
 }
 
@@ -63,7 +63,7 @@ static void parse_arguments (int argc, char** argv, Arguments <T>& arg)
 { 
   int option;
   while (true) {
-    option = getopt (argc, argv, "n:w:h:f:-");
+    option = getopt (argc, argv, "n:w:h:c:-");
     if (option == -1) break;
     switch (option) {
       case 'n':
@@ -75,8 +75,8 @@ static void parse_arguments (int argc, char** argv, Arguments <T>& arg)
       case 'h':
         arg.height = atoi(optarg);
         break;
-      case 'f':
-        arg.output_file_name = std::string(optarg);
+      case 'c':
+        arg.n_threads = atoi(optarg);
         break;
       case '-':
         show_help ();

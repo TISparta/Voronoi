@@ -10,16 +10,16 @@ const int WIDTH = 800;
 const int HEGIHT = 600;
 const int MIN_VAL = -1000;
 const int MAX_VAL =  1000;
-const std::string OUTPUT_FILE_NAME = "diagram";
+const int N_THREADS = 2;
 
 template <typename T>
 struct Arguments {
   int n_points = N_POINTS;
+  int n_threads = N_THREADS;
   int width = WIDTH;
   int height = HEGIHT;
   int min_val = MIN_VAL;
   int max_val = MAX_VAL;
-  std::string output_file_name = OUTPUT_FILE_NAME;
   std::vector <Point <T>> sites; 
 
   void verify () {
