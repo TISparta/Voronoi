@@ -29,6 +29,7 @@ public:
     glCullFace(GL_BACK);
     glLineWidth(5);
   }
+
 	void display()
   {
     GLint width,height,old_width, old_height;

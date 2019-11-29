@@ -1,4 +1,6 @@
 #pragma once
+#include <limits>
+#include <omp.h>
 #include "Point.hpp"
 #include "util.hpp"
 #include <vector>
@@ -10,6 +12,8 @@ std::vector<Point<double>> points;
 class NaiveSolution {
   std::vector<std::vector<Point<double>>> pixels;
   int iteration{0};
+  int width;
+  int height;
   int n;
   int p;
   void generateCoordinates(int width, int height) {
@@ -24,27 +28,29 @@ class NaiveSolution {
     }
   }
   void update(){
-    int width = pixels.size();
-    int height = pixels[0].size();
-    for(int i=iteration; i<iteration+5 && i<width; i++) {
-      for(int c=0; c<height;c++) {
-        double min = 100;
-        for(auto &point: points) {
-          double m = p_norm(point-pixels[i][c], p);
-          if(m<min) {
-            min=m;
-            pixels[i][c].color[0] = point.color[0];
-            pixels[i][c].color[1] = point.color[1];
-            pixels[i][c].color[2] = point.color[2];
+    int delta = 100;
+#pragma omp parallel for
+    for(int c=0; c<height;c++) {
+      for(int i=iteration; i<iteration+delta && i<width; i++)
+        {
+          double min = std::numeric_limits<double>::max();
+          for(auto &point: points)
+            {
+              double m = p_norm(point-pixels[i][c], p);
+              if(m<min) {
+                min=m;
+                pixels[i][c].color[0] = point.color[0];
+                pixels[i][c].color[1] = point.color[1];
+                pixels[i][c].color[2] = point.color[2];
+              }
           }
         }
-      }
     }            
-    iteration += 5;
+    iteration += delta;
   }
 public:
   NaiveSolution(int n, int p, int width, int height)
-    : n(n), p(p)
+    : n(n), p(p), width(width), height(height)
   {
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::default_random_engine generator(seed);
@@ -58,6 +64,8 @@ public:
     generateCoordinates(width, height);
   };
   void setDimension(int width, int height) {
+    this->width = width;
+    this->height = height;
     iteration = 0;
     generateCoordinates(width, height);
   }
@@ -76,8 +84,9 @@ public:
       glVertex2f(p.x, p.y);
     }
     glEnd();
-    //std::this_thread::sleep_for(std::chrono::milliseconds(20));
-    update();
+
+    if(iteration < width)
+      update();
   }
 };
 
