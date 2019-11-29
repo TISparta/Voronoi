@@ -12,21 +12,13 @@ class Window {
 	std::string title;  
   Arguments <T> arg;
 
-
   FortuneAlgorithm <T> *fortune; 
   VoronoiDiagram <T> diagram;
 
 public:
 	Window(int width, int height,int n, int p,std::string title,
-         int argc, char** argv
-         
-         )
+          Arguments <T> arg): arg(arg)
   {
-    util::parse_arguments (argc, argv, arg);
-    arg.verify ();
-    if (arg.sites.empty ()) {
-      util::generate_random_sites (arg.n_points, arg.min_val, arg.max_val, arg.sites);
-    }
 
     fortune = new  FortuneAlgorithm <T> (arg.sites);
     diagram = fortune->getDiagram ();
@@ -71,25 +63,21 @@ public:
   }
 };
 
-
-
-
 int main (int argc, char** argv) {
+  Arguments <T> arg;
+  util::parse_arguments (argc, argv, arg);
+  arg.verify ();
+  if (arg.sites.empty ()) {
+    util::generate_random_sites (arg.n_points, arg.min_val, arg.max_val, arg.sites);
+  }
+
 #ifdef FORTUNE
-	Window w(1000,1000, 10, 2,"Fortune",
-         argc,  argv);
+	Window w(1000,1000, 10, 2,"Fortune", arg);
   w.display();
-
-  // Iterating vertices
-
-
 #else
-  std::cout << "Ingrese el número de cores:" << "\n";
-  int cores;
-  std::cin>>cores;
-  omp_set_num_threads(cores);
+  omp_set_num_threads(arg.n_threads);
   Visualization<Voronoi::NaiveSolution>
-    window(100,100,1000,2,"Naive Solution");
+    window(arg.width, arg.height, arg.n_points, arg.n_threads, "Naive Solution");
   window.display();
 #endif
   return (0);
