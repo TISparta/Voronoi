@@ -67,13 +67,13 @@ struct Point{
     return *this;
   }
 
-  bool operator < (const Point& other) const
+  bool operator < (const Point <T>& other) const
   {
     if (y != other.y) return y < other.y;
     return x < other.x;
   }
 
-  bool operator == (const Point& other) const
+  bool operator == (const Point <T>& other) const
   {
     return x == other.x and y == other.y;
   }
