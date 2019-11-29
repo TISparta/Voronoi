@@ -34,7 +34,6 @@ int main (int argc, char** argv) {
   Visualization<Voronoi::NaiveSolution>
     window(100,100,1000,2,"Naive Solution");
   window.display();
-  // Jhonny's task
 #endif
   return (0);
 }
