@@ -6,7 +6,6 @@
 template <typename T>
 struct Cell {
 
-
   Point <T> site;
   HalfEdge <T>* edges;
 

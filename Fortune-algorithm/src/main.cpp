@@ -15,7 +15,7 @@ int main (int argc, char** argv) {
   VoronoiDiagram <T> diagram = fortune.getDiagram ();
   for (auto cell: diagram.cells) {
     Point <T> site = cell.site;
-    HalfEdge* edge = cell.edges;
+    HalfEdge <T>* edge = cell.edges;
     do {
       Point <T> from = edge->from;
       Point <T> to = edge->to;
