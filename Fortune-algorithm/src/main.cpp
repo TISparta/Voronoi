@@ -15,6 +15,10 @@ int main (int argc, char** argv) {
   VoronoiDiagram <T> diagram;
   // diagram.generate_diagram (arg);
 #else
+  std::cout << "Ingrese el número de cores:" << "\n";
+  int cores;
+  std::cin>>cores;
+  omp_set_num_threads(cores);
   Visualization<Voronoi::NaiveSolution>
     window(100,100,1000,2,"Naive Solution");
   window.display();

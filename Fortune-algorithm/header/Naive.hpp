@@ -16,8 +16,7 @@ class NaiveSolution {
   int height;
   int n;
   int p;
-  void generateCoordinates(int width, int height) {
-            
+  void updateCoordinates() {
     pixels.resize(0, std::vector<Point<double>>(0));
     pixels.resize(width, std::vector<Point<double>>(height));
     for(int i=0;i<width;i++) {
@@ -52,26 +51,25 @@ public:
   NaiveSolution(int n, int p, int width, int height)
     : n(n), p(p), width(width), height(height)
   {
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine generator(seed);
-    std::uniform_real_distribution<> dist(-1, 1);
     for(int i = 0; i<n; ++i) {
       double x = util::random_real<double>(-1,1);
       double y = util::random_real<double>(-1,1);
-
       points.emplace_back(x,y);
     }
-    generateCoordinates(width, height);
+    updateCoordinates();
   };
   void setDimension(int width, int height) {
     this->width = width;
     this->height = height;
     iteration = 0;
-    generateCoordinates(width, height);
+    updateCoordinates();
   }
 
-  void setNorm(int p) { this->p=p;
+  void setNorm(int p)
+  {
+    this->p=p;
   }
+
   void render() {
     glBegin(GL_POINTS);
     for(auto rpixel:pixels) {
