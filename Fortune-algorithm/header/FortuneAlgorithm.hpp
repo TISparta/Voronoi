@@ -155,11 +155,27 @@ private:
     if (arc->next) check_circle_event (arc->next, x);
   }
 
+  /**
+   * Close edges that did not finish in the sweep line process
+   */
+  void close_edges ()
+  {
+    T x = diagram.max_x * 5;
+    for (Arc <T>* cur = beachline; cur->next != NULL; cur = cur->next) {
+      if (cur->edge_left) {
+        cur->edge_left->to = util::compute_parabolas_intersection <T>
+                             (cur->p, cur->next->p, x); 
+      }
+    }
+  }
+
 public:
   FortuneAlgorithm (const std::vector <Point <T>>& sites)
   {
     compute_bounds (sites);
     compute_diagram (sites);
+    close_edges ();
+    diagram.sites = sites;
   }
 
   inline VoronoiDiagram <T> getDiagram () const { return diagram; }

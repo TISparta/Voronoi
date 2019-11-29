@@ -14,5 +14,5 @@ struct VoronoiDiagram {
   int min_y;
   int max_y;
   std::vector <HalfEdge <T>*> edges;
-
+  std::vector <Point <T>> sites;
 };
