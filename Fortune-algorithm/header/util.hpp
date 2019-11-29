@@ -100,6 +100,9 @@ void generate_random_sites (int n_sites, int min_val, int max_val,
   }
 }
 
+/**
+ * Compute the intersection point of two parabolas with directriz x
+ */
 template <typename T>
 Point <T> compute_parabolas_intersection (Point <T> p0, Point <T> p1, T x)
 {
@@ -152,22 +155,23 @@ bool intersect (Point <T> p, Arc <T>* arc, Point <T>& res)
 template <typename T>
 bool generate_circle_event (Point <T> a, Point <T> b, Point <T> c, T& x, Point <T>& o)
 {
-   // Check that bc is a "right turn" from ab.
-   if ((b.x-a.x)*(c.y-a.y) - (c.x-a.x)*(b.y-a.y) > 0)
-      return false;
+  // Check that bc is a "right turn" from ab
+  if ((b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y) > 0) return false;
 
-   // Algorithm from O'Rourke 2ed p. 189.
-   double A = b.x - a.x,  B = b.y - a.y,
-          C = c.x - a.x,  D = c.y - a.y,
-          E = A*(a.x+b.x) + B*(a.y+b.y),
-          F = C*(a.x+c.x) + D*(a.y+c.y),
-          G = 2*(A*(c.y-b.y) - B*(c.x-b.x));
-
-   if (IS_EQ <T> (G, 0)) return false;
-   o.x = (D*E-B*F)/G;
-   o.y = (A*F-C*E)/G;
-   x = o.x + sqrt( std::pow(a.x - o.x, 2) + pow(a.y - o.y, 2) );
-   return true;
+  // Algorithm from O'Rourke 2ed p. 189
+  T A = b.x - a.x;
+  T B = b.y - a.y;
+  T C = c.x - a.x;
+  T D = c.y - a.y;
+  T E = A * (a.x + b.x) + B * (a.y + b.y),
+  F = C * (a.x + c.x) + D * (a.y + c.y),
+  G = 2 * (A * (c.y - b.y) - B * (c.x - b.x));
+  
+  if (IS_EQ <T> (G, 0)) return false;
+  o.x = (D * E - B * F) / G;
+  o.y = (A * F - C * E) / G;
+  x = o.x + sqrt (std::pow(a.x - o.x, 2) + pow(a.y - o.y, 2));
+  return true;
 }
 
 }

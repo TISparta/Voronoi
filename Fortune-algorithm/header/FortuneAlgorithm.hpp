@@ -169,12 +169,27 @@ private:
     }
   }
 
+  /**
+   * Filter invalid edges
+   */
+  void filter_edges ()
+  {
+    std::vector <HalfEdge <T>*> edges;
+    for (auto edge: diagram.edges) {
+      Point <T> p = edge->to;
+      if (util::IS_EQ <T> (p.x, 0) and util::IS_EQ <T> (p.y, 0)) continue;
+      edges.push_back(edge);
+    }
+    diagram.edges = edges;
+  }
+
 public:
   FortuneAlgorithm (const std::vector <Point <T>>& sites)
   {
     compute_bounds (sites);
     compute_diagram (sites);
     close_edges ();
+    filter_edges ();
     diagram.sites = sites;
   }
 
