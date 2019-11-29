@@ -13,6 +13,8 @@ int main (int argc, char** argv) {
   }
   FortuneAlgorithm <T> fortune (arg.sites);
   VoronoiDiagram <T> diagram = fortune.getDiagram ();
+
+  // Iterating cells
   for (auto cell: diagram.cells) {
     Point <T> site = cell.site;
     HalfEdge <T>* edge = cell.edges;
@@ -23,7 +25,12 @@ int main (int argc, char** argv) {
       edge = edge->next;
     } while (edge != cell.edges);
   }
-  // diagram.generate_diagram (arg);
+
+  // Iterating vertices
+  for (auto edge: diagram.edges) {
+    edge -> print ();
+  }
+
 #else
   // Jhonny's task
 #endif

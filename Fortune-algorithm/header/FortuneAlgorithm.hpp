@@ -93,6 +93,8 @@ private:
         // Add edges to the diagram
         cur->prev->edge_right = cur->edge_left  = new HalfEdge <T> (z1);
         cur->next->edge_left  = cur->edge_right = new HalfEdge <T> (z1);
+        diagram.edges.push_back (cur->edge_left);
+        diagram.edges.push_back (cur->edge_right);
         
         // check if new circle events were produced
         check_circle_event (cur, p.x);
@@ -105,6 +107,7 @@ private:
     last->next = new Arc <T> (p, last);
     Point <T> q (diagram.min_x, (last->p.y + last->next->p.y) / 2);
     last->edge_right = last->next->edge_left = new HalfEdge <T> (q);
+    diagram.edges.push_back (last->edge_right);
   }
 
   /**
@@ -135,6 +138,7 @@ private:
     Point <T> p = event.p;
     Arc <T>* arc = event.arc;
     HalfEdge <T>* q = new HalfEdge <T> (p);
+    diagram.edges.push_back (q);
     if (arc->prev) { // delete it
       arc->prev->next = arc->next;
       arc->prev->edge_right = q;

@@ -3,7 +3,7 @@
 #include <queue>
 
 #include "Cell.hpp"
-
+#include "HalfEdge.hpp"
 
 template <typename T>
 struct VoronoiDiagram {
@@ -13,5 +13,6 @@ struct VoronoiDiagram {
   int max_x;
   int min_y;
   int max_y;
+  std::vector <HalfEdge <T>*> edges;
 
 };

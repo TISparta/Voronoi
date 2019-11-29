@@ -8,6 +8,7 @@
 
 template<typename T>
 struct Point{
+  const T EPS = 1e-6;
 	T x,y,z;
   double color[3];
 	Point() {
@@ -64,13 +65,13 @@ struct Point{
 
   bool operator < (const Point <T>& other) const
   {
-    if (y != other.y) return y < other.y;
-    return x < other.x;
+    if (not (std::fabs (x - other.x) < EPS)) return x < other.x;
+    return y < other.y;
   }
 
   bool operator == (const Point <T>& other) const
   {
-    return x == other.x and y == other.y;
+    return std::fabs (x - other.x) < EPS and std::fabs (y == other.y) < EPS;
   }
 
 
